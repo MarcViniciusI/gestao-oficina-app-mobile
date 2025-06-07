@@ -83,6 +83,7 @@ npm install
 
 # Inicie o projeto no emulador Android
 npx react-native run-android
+```
 
 
 
