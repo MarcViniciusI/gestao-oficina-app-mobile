@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Completo - Sistema TEC-MAQLI LTDA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f9ff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a73e8, #4285f4);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(26, 115, 232, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .logo i {
+            font-size: 40px;
+            color: #1a73e8;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .version {
+            display: inline-block;
+            background: white;
+            color: #1a73e8;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .nav h3 {
+            color: #1a73e8;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            list-style: none;
+        }
+
+        .nav-list li {
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .nav-list li:hover {
+            background: #e3f2fd;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(26, 115, 232, 0.1);
+        }
+
+        .nav-list a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            border-radius: 10px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e9ecef;
+        }
+
+        .section h2 {
+            color: #1a73e8;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .section h3 {
+            color: #333;
+            font-size: 1.4rem;
+            margin: 25px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step {
+            background: #f8f9fa;
+            border-left: 4px solid #1a73e8;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .step-number {
+            background: #1a73e8;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .phone-mockup {
+            width: 300px;
+            height: 600px;
+            background: #333;
+            border-radius: 30px;
+            padding: 15px;
+            margin: 20px auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen-header {
+            background: #1a73e8;
+            color: white;
+            padding: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .screen-content {
+            padding: 15px;
+            height: calc(100% - 50px);
+            overflow-y: auto;
+        }
+
+        .input-demo {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 12px 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        .button-demo {
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 20px;
+            margin: 10px 0;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .button-demo.secondary {
+            background: white;
+            color: #666;
+            border: 1px solid #ddd;
+        }
+
+        .alert {
+            background: #e3f2fd;
+            border-left: 4px solid #1a73e8;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .alert.warning {
+            background: #fff3cd;
+            border-left-color: #ffc107;
+        }
+
+        .alert.success {
+            background: #d4edda;
+            border-left-color: #28a745;
+        }
+
+        .alert.error {
+            background: #f8d7da;
+            border-left-color: #dc3545;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .card h4 {
+            color: #1a73e8;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 25px 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #1a73e8, #4285f4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .feature h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            background: #1a73e8;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 50px;
+            color: white;
+        }
+
+        .footer h3 {
+            margin-bottom: 15px;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .screenshot {
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .screenshot-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .phone-mockup {
+                width: 250px;
+                height: 500px;
+            }
+            
+            .nav-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+
+        /* Ícones */
+        .icon {
+            font-size: 1.2em;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="smooth-scroll">
+    <div class="container">
+        <!-- Cabeçalho -->
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-tools"></i>
+            </div>
+            <h1>TEC-MAQLI LTDA</h1>
+            <p>Sistema de Gestão de Clientes e Máquinas Industriais</p>
+            <span class="version">Versão 1.0.0</span>
+        </div>
+
+        <!-- Navegação -->
+        <div class="nav">
+            <h3><i class="fas fa-book-open icon"></i> Índice do Manual</h3>
+            <ul class="nav-list">
+                <li><a href="#introducao"><i class="fas fa-home"></i> Introdução</a></li>
+                <li><a href="#login"><i class="fas fa-sign-in-alt"></i> Tela de Login</a></li>
+                <li><a href="#home"><i class="fas fa-home"></i> Tela Inicial</a></li>
+                <li><a href="#clientes"><i class="fas fa-users"></i> Gestão de Clientes</a></li>
+                <li><a href="#maquinas"><i class="fas fa-cogs"></i> Gestão de Máquinas</a></li>
+                <li><a href="#pecas"><i class="fas fa-cog"></i> Gestão de Peças</a></li>
+                <li><a href="#dicas"><i class="fas fa-lightbulb"></i> Dicas e Soluções</a></li>
+            </ul>
+        </div>
+
+        <!-- Seção: Introdução -->
+        <div class="section" id="introducao">
+            <h2><i class="fas fa-home icon"></i> Introdução ao Sistema</h2>
+            
+            <div class="alert">
+                <i class="fas fa-info-circle" style="font-size: 1.5em; color: #1a73e8;"></i>
+                <div>
+                    <strong>Bem-vindo ao Sistema TEC-MAQLI!</strong><br>
+                    Este manual completo irá guiá-lo através de todas as funcionalidades do sistema de gestão de clientes e máquinas industriais.
+                </div>
+            </div>
+
+            <h3><i class="fas fa-info-circle"></i> Sobre o Sistema</h3>
+            <p>O Sistema TEC-MAQLI LTDA é uma solução integrada para gerenciamento de clientes, máquinas industriais e peças de reposição. Desenvolvido para oficinas mecânicas industriais, oferece:</p>
+
+            <div class="feature-grid">
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h4>Gestão Completa de Clientes</h4>
+                    <p>Cadastro, edição e visualização detalhada de informações dos clientes</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-cogs"></i></div>
+                    <h4>Controle de Máquinas</h4>
+                    <p>Registro e acompanhamento de máquinas industriais por cliente</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-cog"></i></div>
+                    <h4>Gestão de Peças</h4>
+                    <p>Cadastro e controle de peças de reposição para cada máquina</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-search"></i></div>
+                    <h4>Busca Avançada</h4>
+                    <p>Localização rápida de clientes, máquinas e peças</p>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-bullseye"></i> Objetivos do Manual</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4><i class="fas fa-graduation-cap"></i> Aprendizado</h4>
+                    <p>Guia completo para uso de todas as funcionalidades do sistema</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-rocket"></i> Produtividade</h4>
+                    <p>Dicas para aproveitar ao máximo as ferramentas disponíveis</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-question-circle"></i> Solução de Problemas</h4>
+                    <p>Respostas para dúvidas e situações comuns</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção: Login -->
+        <div class="section" id="login">
+            <h2><i class="fas fa-sign-in-alt icon"></i> Tela de Login</h2>
+            
+            <div class="alert warning">
+                <i class="fas fa-exclamation-triangle" style="font-size: 1.5em; color: #ffc107;"></i>
+                <div>
+                    <strong>Modo Demonstração:</strong><br>
+                    Na versão atual, qualquer usuário e senha válidos (com pelo menos 4 caracteres) permitem acesso ao sistema.
+                </div>
+            </div>
+
+            <h3><i class="fas fa-mobile-alt"></i> Interface da Tela de Login</h3>
+            
+            <div class="screenshot-container">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="screen-header">
+                            <span>TEC-MAQLI LTDA</span>
+                        </div>
+                        <div class="screen-content">
+                            <div style="text-align: center; margin: 20px 0;">
+                                <div style="width: 60px; height: 60px; background: #1a73e8; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <h3>Entrar no Sistema</h3>
+                            </div>
+                            
+                            <div style="margin-bottom: 15px;">
+                                <div style="display: flex; align-items: center; background: #f8f9fa; border-radius: 8px; padding: 0 10px; border: 1px solid #ddd;">
+                                    <i class="fas fa-user" style="color: #666;"></i>
+                                    <input type="text" class="input-demo" placeholder="Usuário" style="border: none; background: transparent;">
+                                </div>
+                            </div>
+                            
+                            <div style="margin-bottom: 15px;">
+                                <div style="display: flex; align-items: center; background: #f8f9fa; border-radius: 8px; padding: 0 10px; border: 1px solid #ddd;">
+                                    <i class="fas fa-lock" style="color: #666;"></i>
+                                    <input type="password" class="input-demo" placeholder="Senha" style="border: none; background: transparent;">
+                                    <i class="fas fa-eye" style="color: #666; margin-left: auto;"></i>
+                                </div>
+                            </div>
+                            
+                            <button class="button-demo">
+                                <i class="fas fa-sign-in-alt"></i> Entrar
+                            </button>
+                            
+                            <button class="button-demo secondary">
+                                Limpar Campos
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-list-ol"></i> Passo a Passo para Login</h3>
+            
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    Inserir Credenciais
+                </div>
+                <p><strong><i class="fas fa-user"></i> Usuário:</strong> Digite qualquer nome de usuário no campo indicado</p>
+                <p><strong><i class="fas fa-lock"></i> Senha:</strong> Digite qualquer senha com pelo menos 4 caracteres</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    Validação Automática
+                </div>
+                <p>O sistema verificará automaticamente se os campos estão preenchidos corretamente</p>
+                <p>Para senhas muito curtas (&lt;4 caracteres), será exibido um alerta</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    Acesso ao Sistema
+                </div>
+                <p>Após validação bem-sucedida, você será redirecionado para a tela principal</p>
+                <p>Uma mensagem de boas-vindas será exibida com o nome de usuário informado</p>
+            </div>
+
+            <div class="alert success">
+                <i class="fas fa-lightbulb" style="font-size: 1.5em; color: #28a745;"></i>
+                <div>
+                    <strong>Dica de Uso:</strong><br>
+                    Utilize o ícone <i class="fas fa-eye"></i> para visualizar a senha durante a digitação e confirmar se está correta.
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção: Home -->
+        <div class="section" id="home">
+            <h2><i class="fas fa-home icon"></i> Tela Inicial (Home)</h2>
+            
+            <p>A tela principal é o centro de controle do sistema, onde você pode visualizar, pesquisar e gerenciar todos os clientes cadastrados.</p>
+
+            <h3><i class="fas fa-desktop"></i> Interface da Tela Inicial</h3>
+            
+            <div class="screenshot-container">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="screen-header">
+                            <div style="display: flex; justify-content: space-between; width: 100%;">
+                                <div>
+                                    <div style="font-weight: bold;">Clientes</div>
+                                    <div style="font-size: 12px;">Total: 5</div>
+                                </div>
+                                <div>
+                                    <i class="fas fa-sign-out-alt" style="color: white;"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="screen-content">
+                            <div style="display: flex; align-items: center; background: #f8f9fa; border-radius: 8px; padding: 0 10px; border: 1px solid #ddd; margin-bottom: 15px;">
+                                <i class="fas fa-search" style="color: #666;"></i>
+                                <input type="text" class="input-demo" placeholder="Pesquisar clientes..." style="border: none; background: transparent;">
+                            </div>
+                            
+                            <button class="button-demo">
+                                <i class="fas fa-plus"></i> Adicionar Cliente
+                            </button>
+                            
+                            <div style="font-weight: bold; margin: 15px 0 10px; padding-bottom: 5px; border-bottom: 1px solid #eee;">Lista de Clientes</div>
+                            
+                            <!-- Cliente exemplo -->
+                            <div style="border: 1px solid #eee; border-radius: 8px; padding: 15px; margin-bottom: 10px; background: #f8f9fa;">
+                                <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                    <div style="width: 40px; height: 40px; background: #e3f2fd; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                                        <i class="fas fa-user" style="color: #1a73e8;"></i>
+                                    </div>
+                                    <div style="font-weight: bold;">Hospital São Lucas</div>
+                                </div>
+                                <div style="display: flex; align-items: center; font-size: 13px; color: #666; margin-left: 50px; margin-bottom: 3px;">
+                                    <i class="fas fa-phone" style="margin-right: 5px;"></i>
+                                    (81) 99999-9999
+                                </div>
+                                <div style="display: flex; align-items: center; font-size: 13px; color: #666; margin-left: 50px;">
+                                    <i class="fas fa-map-marker-alt" style="margin-right: 5px;"></i>
+                                    Rua das Flores, 123
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-cogs"></i> Funcionalidades Principais</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4><i class="fas fa-search"></i> Barra de Pesquisa</h4>
+                    <p>Busca instantânea por:</p>
+                    <ul style="padding-left: 20px; margin-top: 10px;">
+                        <li>Nome da empresa</li>
+                        <li>Número de telefone</li>
+                        <li>Endereço completo</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-plus-circle"></i> Adicionar Cliente</h4>
+                    <p>Acesso rápido ao formulário de cadastro de novos clientes</p>
+                    <p>Toque no botão para iniciar um novo registro</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-list"></i> Lista de Clientes</h4>
+                    <p>Visualização organizada com informações essenciais:</p>
+                    <ul style="padding-left: 20px; margin-top: 10px;">
+                        <li>Nome da empresa</li>
+                        <li>Telefone de contato</li>
+                        <li>Endereço completo</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-sign-out-alt"></i> Logout</h4>
+                    <p>Sair do sistema com confirmação</p>
+                    <p>Toque no ícone no canto superior direito</p>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-walking"></i> Como Usar a Tela Inicial</h3>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    Visualizar Clientes
+                </div>
+                <p>Todos os clientes cadastrados aparecem automaticamente na lista principal</p>
+                <p>Cada cartão mostra: Nome, Telefone e Endereço</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    Pesquisar Clientes
+                </div>
+                <p>Digite na barra de pesquisa para filtrar clientes em tempo real</p>
+                <p>A busca funciona em todos os campos visíveis (nome, telefone e endereço)</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    Selecionar Cliente
+                </div>
+                <p>Toque em qualquer cartão de cliente para ver detalhes completos</p>
+                <p>Isso abrirá a tela de detalhes com opções de edição</p>
+            </div>
+        </div>
+
+        <!-- Seção: Gestão de Clientes -->
+        <div class="section" id="clientes">
+            <h2><i class="fas fa-users icon"></i> Gestão de Clientes</h2>
+            
+            <p>Esta seção abrange todas as funcionalidades relacionadas ao cadastro e gerenciamento de clientes no sistema.</p>
+
+            <div class="alert info">
+                <i class="fas fa-info-circle" style="font-size: 1.5em; color: #1a73e8;"></i>
+                <div>
+                    <strong>Campos Obrigatórios:</strong><br>
+                    Nome da Empresa, Telefone e Endereço são obrigatórios. O Email é opcional mas deve ser válido se informado.
+                </div>
+            </div>
+
+            <h3><i class="fas fa-user-plus"></i> Adicionar Novo Cliente</h3>
+            
+            <div class="screenshot-container">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="screen-header">
+                            <div style="display: flex; justify-content: space-between; width: 100%;">
+                                <div><i class="fas fa-arrow-left"></i></div>
+                                <div>
+                                    <div style="font-weight: bold;">Novo Cliente</div>
+                                    <div style="font-size: 12px;">Preencha os dados</div>
+                                </div>
+                                <div><i class="fas fa-times"></i></div>
+                            </div>
+                        </div>
+                        <div class="screen-content">
+                            <div style="margin-bottom: 15px;">
+                                <label style="font-weight: bold; display: block; margin-bottom: 5px;">Nome da Empresa *</label>
+                                <div style="display: flex; align-items: center; background: #f8f9fa; border-radius: 8px; padding: 0 10px; border: 1px solid #ddd;">
+                                    <i class="fas fa-user" style="color: #666;"></i>
+                                    <input type="text" class="input-demo" placeholder="Ex: Hospital São Lucas" style="border: none; background: transparent;">
+                                </div>
+                            </div>
+                            
+                            <div style="margin-bottom: 15px;">
+                                <label style="font-weight: bold; display: block; margin-bottom: 5px;">Telefone *</label>
+                                <div style="display: flex; align-items: center; background: #f8f9fa; border-radius: 8px; padding: 0 10px; border: 1px solid #ddd;">
+                                    <i class="fas fa-phone" style="color: #666;"></i>
+                                    <input type="text" class="input-demo" placeholder="(81) 99999-9999" style="border: none; background: transparent;">
+                                </div>
+                            </div>
+                            
+                            <div style="margin-bottom: 15px;">
+                                <label style="font-weight: bold; display: block; margin-bottom: 5px;">Endereço *</label>
+                                <div style="display: flex; align-items: center; background: #f8f9fa; border-radius: 8px; padding: 0 10px; border: 1px solid #ddd;">
+                                    <i class="fas fa-map-marker-alt" style="color: #666;"></i>
+                                    <input type="text" class="input-demo" placeholder="Ex: Rua das Flores, 123" style="border: none; background: transparent;">
+                                </div>
+                            </div>
+                            
+                            <div style="margin-bottom: 15px;">
+                                <label style="font-weight: bold; display: block; margin-bottom: 5px;">Email</label>
+                                <div style="display: flex; align-items: center; background: #f8f9fa; border-radius: 8px; padding: 0 10px; border: 1px solid #ddd;">
+                                    <i class="fas fa-envelope" style="color: #666;"></i>
+                                    <input type="text" class="input-demo" placeholder="contato@empresa.com" style="border: none; background: transparent;">
+                                </div>
+                            </div>
+                            
+                            <div style="text-align: center; font-size: 12px; color: #666; margin: 15px 0;">* Campos obrigatórios</div>
+                            
+                            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                                <button class="button-demo secondary" style="flex: 1;">Cancelar</button>
+                                <button class="button-demo" style="flex: 2;">
+                                    <i class="fas fa-save"></i> Salvar Cliente
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-list-ol"></i> Passo a Passo do Cadastro</h3>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    Acessar Formulário
+                </div>
+                <p>Na tela principal, toque no botão <strong>"Adicionar Cliente"</strong></p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    Preencher Dados Obrigatórios
+                </div>
+                <p><strong><i class="fas fa-user"></i> Nome da Empresa:</strong> Nome completo da empresa cliente</p>
+                <p><strong><i class="fas fa-phone"></i> Telefone:</strong> Número no formato (XX) XXXXX-XXXX (formatação automática)</p>
+                <p><strong><i class="fas fa-map-marker-alt"></i> Endereço:</strong> Endereço completo da empresa</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    Preencher Dados Opcionais
+                </div>
+                <p><strong><i class="fas fa-envelope"></i> Email:</strong> Email de contato (se fornecido, deve ser válido)</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">4</span>
+                    Validação e Salvamento
+                </div>
+                <p>Toque em <strong>"Salvar Cliente"</strong> para validar e salvar os dados</p>
+                <p>O sistema verificará automaticamente todos os campos</p>
+                <p>Em caso de sucesso, você será redirecionado para a tela inicial</p>
+            </div>
+
+            <h3><i class="fas fa-user-edit"></i> Editar Cliente Existente</h3>
+            
+            <div class="screenshot-container">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="screen-header">
+                            <div style="display: flex; justify-content: space-between; width: 100%;">
+                                <div><i class="fas fa-arrow-left"></i></div>
+                                <div>
+                                    <div style="font-weight: bold;">Detalhes do Cliente</div>
+                                    <div style="font-size: 12px;">Editando</div>
+                                </div>
+                                <div><i class="fas fa-times" style="color: #f44336;"></i></div>
+                            </div>
+                        </div>
+                        <div class="screen-content">
+                            <div style="margin-bottom: 20px;">
+                                <div style="font-weight: bold; margin-bottom: 10px; color: #1a73e8;">Informações do Cliente</div>
+                                
+                                <div style="margin-bottom: 15px;">
+                                    <label style="font-weight: bold; display: block; margin-bottom: 5px;">Nome da Empresa</label>
+                                    <div style="display: flex; align-items: center; background: #f8f9fa; border-radius: 8px; padding: 0 10px; border: 1px solid #ddd;">
+                                        <i class="fas fa-user" style="color: #666;"></i>
+                                        <input type="text" class="input-demo" value="Hospital São Lucas" style="border: none; background: transparent;">
+                                    </div>
+                                </div>
+                                
+                                <div style="margin-bottom: 15px;">
+                                    <label style="font-weight: bold; display: block; margin-bottom: 5px;">Telefone</label>
+                                    <div style="display: flex; align-items: center; background: #f8f9fa; border-radius: 8px; padding: 0 10px; border: 1px solid #ddd;">
+                                        <i class="fas fa-phone" style="color: #666;"></i>
+                                        <input type="text" class="input-demo" value="(81) 99999-9999" style="border: none; background: transparent;">
+                                    </div>
+                                </div>
+                                
+                                <div style="margin-bottom: 15px;">
+                                    <label style="font-weight: bold; display: block; margin-bottom: 5px;">Endereço</label>
+                                    <div style="display: flex; align-items: center; background: #f8f9fa; border-radius: 8px; padding: 0 10px; border: 1px solid #ddd;">
+                                        <i class="fas fa-map-marker-alt" style="color: #666;"></i>
+                                        <input type="text" class="input-demo" value="Rua das Flores, 123" style="border: none; background: transparent;">
+                                    </div>
+                                </div>
+                                
+                                <div style="margin-bottom: 15px;">
+                                    <label style="font-weight: bold; display: block; margin-bottom: 5px;">Email</label>
+                                    <div style="display: flex; align-items: center; background: #f8f9fa; border-radius: 8px; padding: 0 10px; border: 1px solid #ddd;">
+                                        <i class="fas fa-envelope" style="color: #666;"></i>
+                                        <input type="text" class="input-demo" value="contato@hsl.com.br" style="border: none; background: transparent;">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                                <button class="button-demo secondary" style="flex: 1;">Cancelar</button>
+                                <button class="button-demo" style="flex: 2;">
+                                    <i class="fas fa-save"></i> Salvar Alterações
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    Acessar Detalhes do Cliente
+                </div>
+                <p>Na tela inicial, toque no cliente que deseja editar</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    Entrar em Modo Edição
+                </div>
+                <p>Toque no ícone de edição <i class="fas fa-edit"></i> no canto superior direito</p>
+                <p>Os campos ficarão editáveis e os botões de ação aparecerão</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    Modificar Dados
+                </div>
+                <p>Altere os campos necessários (todos com validação automática)</p>
+                <p>O telefone terá formatação automática durante a digitação</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">4</span>
+                    Salvar ou Cancelar
+                </div>
+                <p>Toque em <strong>"Salvar Alterações"</strong> para confirmar</p>
+                <p>Ou em <strong>"Cancelar"</strong> para descartar as mudanças</p>
+            </div>
+
+            <h3><i class="fas fa-trash-alt"></i> Excluir Cliente</h3>
+            
+            <div class="alert warning">
+                <i class="fas fa-exclamation-triangle" style="font-size: 1.5em; color: #ffc107;"></i>
+                <div>
+                    <strong>Atenção:</strong><br>
+                    A exclusão de um cliente removerá também todas as máquinas e peças associadas. Esta ação não pode ser desfeita.
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    Acessar Detalhes do Cliente
+                </div>
+                <p>Na tela inicial, toque no cliente que deseja excluir</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    Localizar Botão de Exclusão
+                </div>
+                <p>Na seção "Ações", toque no botão <strong>"Excluir Cliente"</strong></p>
+                <p>O botão tem ícone de lixeira <i class="fas fa-trash-alt"></i> e cor vermelha</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    Confirmar Exclusão
+                </div>
+                <p>Uma mensagem de confirmação será exibida</p>
+                <p>Toque em <strong>"Excluir"</strong> para confirmar ou <strong>"Cancelar"</strong> para abortar</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">4</span>
+                    Resultado
+                </div>
+                <p>Em caso de sucesso, você será redirecionado para a tela inicial</p>
+                <p>Uma mensagem confirmando a exclusão será exibida</p>
+            </div>
+        </div>
+
+        <!-- Seção: Gestão de Máquinas -->
+        <div class="section" id="maquinas">
+            <h2><i class="fas fa-cogs icon"></i> Gestão de Máquinas</h2>
+            
+            <p>Esta seção explica como gerenciar as máquinas industriais associadas a cada cliente.</p>
+
+            <div class="alert info">
+                <i class="fas fa-info-circle" style="font-size: 1.5em; color: #1a73e8;"></i>
+                <div>
+                    <strong>Hierarquia:</strong><br>
+                    Cada máquina pertence a um cliente e pode ter várias peças associadas.
+                </div>
+            </div>
+
+            <h3><i class="fas fa-list"></i> Lista de Máquinas do Cliente</h3>
+            
+            <div class="screenshot-container">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="screen-header">
+                            <div style="display: flex; justify-content: space-between; width: 100%;">
+                                <div><i class="fas fa-arrow-left"></i></div>
+                                <div>
+                                    <div style="font-weight: bold;">Máquinas do Cliente</div>
+                                    <div style="font-size: 12px;">Hospital São Lucas</div>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                        <div class="screen-content">
+                            <div style="display: flex; align-items: center; background: #f8f9fa; border-radius: 8px; padding: 0 10px; border: 1px solid #ddd; margin-bottom: 15px;">
+                                <i class="fas fa-search" style="color: #666;"></i>
+                                <input type="text" class="input-demo" placeholder="Pesquisar máquinas..." style="border: none; background: transparent;">
+                            </div>
+                            
+                            <button class="button-demo">
+                                <i class="fas fa-plus"></i> Adicionar Máquina
+                            </button>
+                            
+                            <div style="font-weight: bold; margin: 15px 0 10px; padding-bottom: 5px; border-bottom: 1px solid #eee;">Lista de Máquinas</div>
+                            
+                            <!-- Máquina exemplo -->
+                            <div style="border: 1px solid #eee; border-radius: 8px; padding: 15px; margin-bottom: 10px;">
+                                <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                    <div style="width: 40px; height: 40px; background: #e3f2fd; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                                        <i class="fas fa-cog" style="color: #1a73e8;"></i>
+                                    </div>
+                                    <div style="font-weight: bold;">Máquina de Corte CNC</div>
+                                </div>
+                                <div style="font-size: 13px; color: #666; margin-left: 50px; margin-bottom: 3px;">
+                                    Modelo: MC-5000
+                                </div>
+                                <div style="display: flex; align-items: center; font-size: 13px; color: #666; margin-left: 50px;">
+                                    <i class="fas fa-calendar-alt" style="margin-right: 5px;"></i>
+                                    Última manutenção: 15/05/2023
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-plus-circle"></i> Adicionar Nova Máquina</h3>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    Acessar Lista de Máquinas
+                </div>
+                <p>Na tela de detalhes do cliente, toque no botão <strong>"Ver Máquinas"</strong></p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    Iniciar Cadastro
+                </div>
+                <p>Toque no botão <strong>"Adicionar Máquina"</strong> no topo da lista</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    Preencher Dados
+                </div>
+                <p>Informe os dados da máquina:</p>
+                <ul style="padding-left: 20px; margin-top: 10px;">
+                    <li><strong>Nome da Máquina:</strong> Identificação clara (ex: "Máquina de Corte CNC")</li>
+                    <li><strong>Modelo:</strong> Modelo específico do fabricante</li>
+                    <li><strong>Última Manutenção:</strong> Data da última manutenção realizada</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">4</span>
+                    Confirmar Cadastro
+                </div>
+                <p>Toque em <strong>"Salvar"</strong> para adicionar a máquina</p>
+                <p>A nova máquina aparecerá na lista do cliente</p>
+            </div>
+
+            <h3><i class="fas fa-edit"></i> Editar Máquina Existente</h3>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    Acessar Detalhes da Máquina
+                </div>
+                <p>Na lista de máquinas do cliente, toque na máquina que deseja editar</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    Entrar em Modo Edição
+                </div>
+                <p>Toque no ícone de edição <i class="fas fa-edit"></i> no canto superior direito</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    Modificar Dados
+                </div>
+                <p>Altere os campos necessários:</p>
+                <ul style="padding-left: 20px; margin-top: 10px;">
+                    <li>Nome da Máquina</li>
+                    <li>Modelo</li>
+                    <li>Data da última manutenção</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">4</span>
+                    Salvar Alterações
+                </div>
+                <p>Toque em <strong>"Salvar Alterações"</strong> para confirmar</p>
+                <p>Ou em <strong>"Cancelar"</strong> para descartar as mudanças</p>
+            </div>
+
+            <h3><i class="fas fa-trash-alt"></i> Excluir Máquina</h3>
+            
+            <div class="alert warning">
+                <i class="fas fa-exclamation-triangle" style="font-size: 1.5em; color: #ffc107;"></i>
+                <div>
+                    <strong>Atenção:</strong><br>
+                    A exclusão de uma máquina removerá também todas as peças associadas. Esta ação não pode ser desfeita.
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    Acessar Detalhes da Máquina
+                </div>
+                <p>Na lista de máquinas do cliente, toque na máquina que deseja excluir</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    Localizar Botão de Exclusão
+                </div>
+                <p>Na seção "Ações", toque no botão <strong>"Excluir Máquina"</strong></p>
+                <p>O botão tem ícone de lixeira <i class="fas fa-trash-alt"></i> e cor vermelha</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    Confirmar Exclusão
+                </div>
+                <p>Uma mensagem de confirmação será exibida</p>
+                <p>Toque em <strong>"Excluir"</strong> para confirmar ou <strong>"Cancelar"</strong> para abortar</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">4</span>
+                    Resultado
+                </div>
+                <p>Em caso de sucesso, você será redirecionado para a lista de máquinas</p>
+                <p>Uma mensagem confirmando a exclusão será exibida</p>
+            </div>
+        </div>
+
+        <!-- Seção: Gestão de Peças -->
+        <div class="section" id="pecas">
+            <h2><i class="fas fa-cog icon"></i> Gestão de Peças</h2>
+            
+            <p>Esta seção explica como gerenciar as peças de reposição associadas a cada máquina.</p>
+
+            <h3><i class="fas fa-list"></i> Lista de Peças da Máquina</h3>
+            
+            <div class="screenshot-container">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="screen-header">
+                            <div style="display: flex; justify-content: space-between; width: 100%;">
+                                <div><i class="fas fa-arrow-left"></i></div>
+                                <div>
+                                    <div style="font-weight: bold;">Detalhes da Máquina</div>
+                                    <div style="font-size: 12px;">Máquina de Corte CNC</div>
+                                </div>
+                                <div><i class="fas fa-edit"></i></div>
+                            </div>
+                        </div>
+                        <div class="screen-content">
+                            <div style="margin-bottom: 20px;">
+                                <div style="font-weight: bold; margin-bottom: 10px; color: #1a73e8;">Informações da Máquina</div>
+                                
+                                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                                    <i class="fas fa-cog" style="color: #666; margin-right: 10px;"></i>
+                                    <div>
+                                        <div style="font-weight: bold;">Máquina de Corte CNC</div>
+                                        <div style="font-size: 13px; color: #666;">Modelo: MC-5000</div>
+                                    </div>
+                                </div>
+                                
+                                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                                    <i class="fas fa-calendar-alt" style="color: #666; margin-right: 10px;"></i>
+                                    <div>
+                                        <div style="font-weight: bold;">Última Manutenção</div>
+                                        <div style="font-size: 13px; color: #666;">15/05/2023</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                    <div style="font-weight: bold; color: #1a73e8;">Peças da Máquina</div>
+                                    <div style="width: 30px; height: 30px; border: 1px solid #1a73e8; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                        <i class="fas fa-plus" style="color: #1a73e8; font-size: 12px;"></i>
+                                    </div>
+                                </div>
+                                
+                                <!-- Peça exemplo -->
+                                <div style="border: 1px solid #eee; border-radius: 8px; padding: 12px; margin-bottom: 10px; background: #f8f9fa;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                                        <div style="display: flex; align-items: center;">
+                                            <div style="width: 30px; height: 30px; background: #e3f2fd; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px;">
+                                                <i class="fas fa-cog" style="color: #1a73e8; font-size: 12px;"></i>
+                                            </div>
+                                            <div>
+                                                <div style="font-weight: bold;">Motor Principal</div>
+                                                <div style="font-size: 12px; color: #666;">Modelo: MP-300</div>
+                                            </div>
+                                        </div>
+                                        <div style="display: flex;">
+                                            <div style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin-left: 10px;">
+                                                <i class="fas fa-edit" style="color: #1a73e8; font-size: 14px;"></i>
+                                            </div>
+                                            <div style="width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; margin-left: 5px;">
+                                                <i class="fas fa-trash-alt" style="color: #f44336; font-size: 14px;"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="font-size: 12px; color: #666; margin-left: 40px; margin-top: 5px;">
+                                        Quantidade: 2
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-plus-circle"></i> Adicionar Nova Peça</h3>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    Acessar Detalhes da Máquina
+                </div>
+                <p>Na lista de máquinas do cliente, toque na máquina desejada</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    Abrir Formulário de Peça
+                </div>
+                <p>Na seção "Peças da Máquina", toque no ícone <i class="fas fa-plus"></i></p>
+                <p>Um modal será aberto para cadastro da nova peça</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    Preencher Dados
+                </div>
+                <p>Informe os dados da peça:</p>
+                <ul style="padding-left: 20px; margin-top: 10px;">
+                    <li><strong>Nome da Peça:</strong> Identificação clara (ex: "Motor Principal")</li>
+                    <li><strong>Modelo:</strong> Modelo específico do fabricante</li>
+                    <li><strong>Quantidade:</strong> Número em estoque (padrão: 1)</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">4</span>
+                    Confirmar Cadastro
+                </div>
+                <p>Toque em <strong>"Salvar"</strong> para adicionar a peça</p>
+                <p>A nova peça aparecerá na lista de peças da máquina</p>
+            </div>
+
+            <h3><i class="fas fa-edit"></i> Editar Peça Existente</h3>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    Acessar Detalhes da Máquina
+                </div>
+                <p>Na lista de máquinas do cliente, toque na máquina desejada</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    Localizar Peça
+                </div>
+                <p>Na seção "Peças da Máquina", encontre a peça que deseja editar</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    Abrir Edição
+                </div>
+                <p>Toque no ícone de edição <i class="fas fa-edit"></i> ao lado da peça</p>
+                <p>Um modal será aberto com os dados atuais da peça</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">4</span>
+                    Modificar Dados
+                </div>
+                <p>Altere os campos necessários:</p>
+                <ul style="padding-left: 20px; margin-top: 10px;">
+                    <li>Nome da Peça</li>
+                    <li>Modelo</li>
+                    <li>Quantidade</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">5</span>
+                    Salvar Alterações
+                </div>
+                <p>Toque em <strong>"Salvar"</strong> para confirmar as mudanças</p>
+                <p>A peça será atualizada na lista</p>
+            </div>
+
+            <h3><i class="fas fa-trash-alt"></i> Excluir Peça</h3>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    Acessar Detalhes da Máquina
+                </div>
+                <p>Na lista de máquinas do cliente, toque na máquina desejada</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    Localizar Peça
+                </div>
+                <p>Na seção "Peças da Máquina", encontre a peça que deseja excluir</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    Iniciar Exclusão
+                </div>
+                <p>Toque no ícone de lixeira <i class="fas fa-trash-alt"></i> ao lado da peça</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">4</span>
+                    Confirmar Exclusão
+                </div>
+                <p>Uma mensagem de confirmação será exibida</p>
+                <p>Toque em <strong>"Excluir"</strong> para confirmar ou <strong>"Cancelar"</strong> para abortar</p>
+            </div>
+
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">5</span>
+                    Resultado
+                </div>
+                <p>A peça será removida da lista imediatamente</p>
+            </div>
+        </div>
+
+        <!-- Seção: Dicas e Soluções -->
+        <div class="section" id="dicas">
+            <h2><i class="fas fa-lightbulb icon"></i> Dicas e Soluções</h2>
+            
+            <p>Esta seção contém dicas úteis e soluções para problemas comuns no sistema.</p>
+
+            <h3><i class="fas fa-question-circle"></i> Perguntas Frequentes</h3>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4><i class="fas fa-search"></i> Não encontro um cliente</h4>
+                    <p>Verifique se você está usando o termo correto na busca. O sistema pesquisa em nome, telefone e endereço simultaneamente.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-save"></i> Não consigo salvar um cliente</h4>
+                    <p>Certifique-se que todos os campos obrigatórios estão preenchidos corretamente. O sistema mostrará mensagens de erro específicas.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-phone"></i> Formato de telefone inválido</h4>
+                    <p>O sistema formata automaticamente para (XX) XXXXX-XXXX. Digite apenas os números, o formato será aplicado automaticamente.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-envelope"></i> Email inválido</h4>
+                    <p>Se informar um email, ele deve conter um formato válido (ex: usuario@provedor.com). O email é opcional.</p>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-exclamation-triangle"></i> Mensagens de Erro Comuns</h3>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4><i class="fas fa-times-circle" style="color: #f44336;"></i> "Nome é obrigatório"</h4>
+                    <p>O campo Nome da Empresa não pode ficar vazio. Informe um nome válido para o cliente.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-times-circle" style="color: #f44336;"></i> "Telefone é obrigatório"</h4>
+                    <p>O campo Telefone deve ser preenchido com um número válido no formato (XX) XXXXX-XXXX.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-times-circle" style="color: #f44336;"></i> "Endereço é obrigatório"</h4>
+                    <p>O campo Endereço não pode ficar vazio. Informe um endereço válido para o cliente.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-times-circle" style="color: #f44336;"></i> "Formato de email inválido"</h4>
+                    <p>O email informado não está em um formato válido. Verifique se contém "@" e um domínio correto.</p>
+                </div>
+            </div>
+
+            <h3><i class="fas fa-tips"></i> Dicas de Produtividade</h3>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4><i class="fas fa-bolt"></i> Busca Rápida</h4>
+                    <p>Use a barra de pesquisa na tela inicial para encontrar clientes rapidamente, sem precisar rolar a lista.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-clipboard-list"></i> Cadastro Completo</h4>
+                    <p>Preencha todos os campos possíveis ao cadastrar um cliente para ter informações completas disponíveis.</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-history"></i> Histórico de Atualizações</h4>
+                    <p>Na tela de detalhes, veja quando o cliente foi cadastrado e sua última atualização na seção "Informações do Sistema".</p>
+                </div>
+                <div class="card">
+                    <h4><i class="fas fa-mobile-alt"></i> Design Responsivo</h4>
+                    <p>O sistema foi projetado para funcionar bem tanto em smartphones quanto em tablets.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rodapé -->
+        <div class="footer">
+            <h3>TEC-MAQLI LTDA</h3>
+            <p>Sistema de Gestão de Clientes e Máquinas Industriais</p>
+            <p>Manual de Uso - Versão 1.0.0</p>
+        </div>
+    </div>
+</body>
+</html>
