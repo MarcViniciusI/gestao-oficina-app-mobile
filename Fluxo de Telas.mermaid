@@ -1,0 +1,11 @@
+flowchart TD
+    A[LoginScreen] -->|Login válido| B[HomeScreen]
+    B --> C[AddClientScreen]
+    B --> D[ClientDetailsScreen]
+    D --> E[MaquinasClienteScreen]
+    E --> F[MachineDetailsScreen]
+    B -->|Logout| A
+    C -->|Cancelar/Salvar| B
+    D -->|Cancelar/Voltar| B
+    E -->|Voltar| D
+    F -->|Voltar| E

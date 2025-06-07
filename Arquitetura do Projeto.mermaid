@@ -1,0 +1,37 @@
+classDiagram
+    class App {
+        +AppNavigator
+    }
+    
+    class AppNavigator {
+        +NavigationContainer
+        +Stack.Navigator
+    }
+    
+    class Screens {
+        <<interface>>
+        +LoginScreen
+        +HomeScreen
+        +AddClientScreen
+        +ClientDetailsScreen
+        +MaquinasClienteScreen
+        +MachineDetailsScreen
+    }
+    
+    class Services {
+        <<service>>
+        +ClienteService
+    }
+    
+    class Models {
+        <<model>>
+        +Cliente
+        +Maquina
+        +Peca
+    }
+    
+    App --> AppNavigator
+    AppNavigator --> Screens
+    Screens --> Services
+    Services --> Models
+    Services --> AsyncStorage
