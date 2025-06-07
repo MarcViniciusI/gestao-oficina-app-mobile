@@ -62,18 +62,24 @@ src/
 - Detalhamento e controle de peças por máquina
 
 ## 📂 Estrutura de Pastas
-/screens         Telas da aplicação (Login, Home, Clientes, Máquinas)
+/screens         
 
-/services        Lógica de dados simulados (ClienteService)
+Telas da aplicação (Login, Home, Clientes, Máquinas)
 
-/navigation      Navegação entre telas
+/services        
+
+Lógica de dados simulados (ClienteService)
+
+/navigation      
+
+Navegação entre telas
 
 
 ## 🧪 Como Rodar o Projeto
 
 ```bash
 # Clone este repositório
-git clone https://github.com/seu-usuario/tecmqli-app.git
+git clone [https://github.com/MarcViniciusI/gestao-oficina-app-mobile.git]
 
 # Acesse a pasta do projeto
 cd tecmqli-app
@@ -84,9 +90,6 @@ npm install
 # Inicie o projeto no emulador Android
 npx react-native run-android
 ```
-
-
-
 
 ## 📚 Licença
 Este projeto foi desenvolvido para fins acadêmicos e não possui licença comercial. Uso livre com créditos.
